@@ -5,6 +5,7 @@
 */
 
 // import the JSON data about the crowd funded games from the games.js file
+// import { createElement } from 'react';
 import GAMES_DATA from './games.js';
 
 // create a list of objects to store the data about the games using JSON.parse
@@ -29,26 +30,38 @@ const gamesContainer = document.getElementById("games-container");
 function addGamesToPage(games) {
 
     // loop over each item in the data
+        games.forEach(item => {
 
+            // create a new div element, which will become the game card
+            const newcard = document.createElement("div")
 
-        // create a new div element, which will become the game card
+            // add the class game-card to the list
+            newcard.classList.add('game-card')
 
+            // set the inner HTML using a template literal to display some info 
+            // about each game
+            // TIP: if your images are not displaying, make sure there is space
+            // between the end of the src attribute and the end of the tag ("/>")
 
-        // add the class game-card to the list
+            const gameHTML = `
+                <div>
+                    <img class=game-img src=${item.img} />
+                    <h3>${item.name}</h3>
+                    <p>${item.description}</p>
+                    <p>Backers: ${item.backers}</p>
+                </div>
+            `;
 
+            newcard.innerHTML = gameHTML
 
-        // set the inner HTML using a template literal to display some info 
-        // about each game
-        // TIP: if your images are not displaying, make sure there is space
-        // between the end of the src attribute and the end of the tag ("/>")
-
-
-        // append the game to the games-container
-
+            // append the game to the games-container
+            gamesContainer.append(newcard)
+        });
 }
 
 // call the function we just defined using the correct variable
 // later, we'll call this function using a different list of games
+addGamesToPage(GAMES_JSON)
 
 
 /*************************************************************************************
@@ -61,19 +74,50 @@ function addGamesToPage(games) {
 const contributionsCard = document.getElementById("num-contributions");
 
 // use reduce() to count the number of total contributions by summing the backers
-
+const totalcontribute = GAMES_JSON.reduce( (total, item) => {
+    return total + item.backers;
+}, 0);
 
 // set the inner HTML using a template literal and toLocaleString to get a number with commas
+const totalcontHTML = `
+    <div>
+        ${totalcontribute.toLocaleString('en-US')}
+    </div>
+`;
 
+contributionsCard.innerHTML = totalcontHTML
 
 // grab the amount raised card, then use reduce() to find the total amount raised
 const raisedCard = document.getElementById("total-raised");
 
+const totalraise = GAMES_JSON.reduce( (total, item) => {
+    return total + item.pledged;
+}, 0);
+
 // set inner HTML using template literal
+const totalraiseHTML = `
+    <div>
+        $ ${totalraise.toLocaleString('en-US')}
+    </div>
+`;
+
+raisedCard.innerHTML = totalraiseHTML
 
 
 // grab number of games card and set its inner HTML
 const gamesCard = document.getElementById("num-games");
+
+const totalgame = GAMES_JSON.reduce( (total, item) => {
+    return total + 1;
+}, 0);
+
+const totalgameHTML = `
+    <div>
+        ${totalgame.toLocaleString('en-US')}
+    </div>
+`;
+
+gamesCard.innerHTML = totalgameHTML
 
 
 /*************************************************************************************
