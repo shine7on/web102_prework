@@ -24,7 +24,9 @@ The following **optional** features are implemented:
 
 Here's a walkthrough of implemented features:
 
-<video src="./assets/walkthrough.mp4" controls width="600"></video>
+<video src="./assets/download.gif" controls width="600"></video>
+
+GIF created with Canva
 
 ## Notes
 
