@@ -226,8 +226,30 @@ const firstName = document.createElement('div');
 firstName.innerHTML = name1;
 firstGameContainer.append(firstName);
 
+// do the same for the runner up item
 const secondName = document.createElement('div');
 secondName.innerHTML = name2;
 secondGameContainer.append(secondName);
 
-// do the same for the runner up item
+
+// show only games that includes that word
+function filterByTitle(title) {
+    deleteChildElements(gamesContainer);
+
+    const words = title.toLowerCase();
+
+    // use filter() to get a list of games that includes words
+    let listOfGames = GAMES_JSON.filter( (game) => {
+        const origin = game.name.toLowerCase();
+        return origin.includes(words)
+    });
+
+    // use the function we previously created to add filtered games to the DOM
+    addGamesToPage(listOfGames);
+}
+
+const searchInput = document.getElementById("title");
+searchInput.addEventListener( "input", (event) => {
+    const input = event.target.value;
+    filterByTitle(input);
+});
