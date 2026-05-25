@@ -17,13 +17,14 @@ The following **required** functionality is completed:
 
 The following **optional** features are implemented:
 
-* [ ] List anything else that you can get done to improve the app functionality!
+* [☑️] Added a live search feature that filters games dynamically as the user types in the search bar.
+* [☑️] Added custom styling for the search input to better match the overall website theme.
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented features:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<video src="./assets/walkthrough.mov" controls width="600"></video>
 
 <!-- Replace this with whatever GIF tool you used! -->
 GIF created with ...  
@@ -34,7 +35,7 @@ GIF created with ...
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+One challenge I encountered was understanding how DOM manipulation works together with JavaScript array methods like filter(), reduce(), and sort(). I also spent time debugging issues related to event listeners, template literals, and dynamically rendering filtered game cards onto the page. Implementing the live search feature helped me better understand how user input and real-time UI updates work in frontend development.
 
 ## License
 
